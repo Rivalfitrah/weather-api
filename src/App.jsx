@@ -37,7 +37,7 @@ function App() {
         <h1 className='text-2xl font-bold mb-4'>Weather App</h1>
         <form action="city" onSubmit={handlecuaca}>
           <div className='mb-4'>
-            <label htmlFor="city" className='block text-sm font-medium text-gray-700'>Enter City:</label>
+            <label htmlFor="city" className='block text-sm font-medium text-gray-700'>Masukkan Kota:</label>
             <input type="text" id="city" name="city" className='mt-1 block w-full p-2 border border-gray-300 rounded-md' placeholder='e.g. Jakarta' 
             onChange={(e) => setCity(e.target.value)} />
           </div>
