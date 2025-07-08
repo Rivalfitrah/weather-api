@@ -32,7 +32,7 @@ function City() {
         }}
       >
         <div className="flex flex-col items-center justify-center min-h-screen absolute z-50">
-          <Link href="/" className="text-blue-500 hover:underline mb-4">
+          <Link to="/" className="text-blue-500 hover:underline mb-4">
             Kembali ke Beranda
           </Link>
           <h1 className="text-3xl font-bold mb-4">Cuaca di {city}</h1>
