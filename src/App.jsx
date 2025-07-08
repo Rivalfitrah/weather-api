@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { use, useState } from 'react';
 import './App.css';
 import { getcuaca } from './lib/api';
 import { PlaceholdersAndVanishInput } from "./components/ui/placeholders-and-vanish-input";
+import { useNavigate } from 'react-router-dom';
 
 function App() {
   const [cuaca, setCuaca] = useState(null);
   const [city, setCity] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const placeholders = [
     "Cek cuaca di Jakarta...",
@@ -16,23 +18,12 @@ function App() {
     "Cari suhu udara sekarang..."
   ];
 
-  const handleChange = (e) => setCity(e.target.value);
 
-
-  const handlecuaca = async (e) => {
-    e.preventDefault();
-    if (!city) return;
-
-    setLoading(true);
-    try {
-      const data = await getcuaca(city);
-      setCuaca(data);
-    } catch (error) {
-      console.error("Gagal ambil data cuaca:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const handlecuaca = (e) => {
+    e.preventDefault()
+    if (!city.trim()) return
+    navigate(`/${city.trim()}`)
+  }
 
   return (
     <div

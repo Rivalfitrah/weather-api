@@ -22,20 +22,29 @@ function City() {
   }, [city])
 
   return (
-    <div className='flex flex-col items-center justify-center min-h-screen bg-gray-100'>
+    <>
+     <div className='flex flex-col items-center justify-center min-h-screen bg-gray-100'>
+    <h1 className="text-3xl font-bold mb-4">Cuaca di {city}</h1>
     {error ? (
       <p className="text-red-500">{error}</p>
     ) : cuaca ? (
       <div>
-        <h2>Cuaca di {cuaca.location.name}</h2>
+        <p>Country: {cuaca.location.country}</p>
+        <p>region: {cuaca.location.region}</p>
         <p>Temperature: {cuaca.current.temp_c} °C</p>
         <p>Condition: {cuaca.current.condition.text}</p>
         <img src={cuaca.current.condition.icon} alt={cuaca.current.condition.text} />
+        <p>Wind: {cuaca.current.wind_kph} kph</p>
+        <p>Feels Like: {cuaca.current.feelslike_c} °C</p>
+        <p>Last Updated: {cuaca.current.last_updated}</p>
       </div>
     ) : (
       <p>Loading...</p>
     )}
   </div>
+    </>
+    
+   
   )
 }
 
