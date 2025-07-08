@@ -1,13 +1,24 @@
 import { useState } from 'react';
 import './App.css';
 import { getcuaca } from './lib/api';
+import { PlaceholdersAndVanishInput } from "./components/ui/placeholders-and-vanish-input";
 
 function App() {
   const [cuaca, setCuaca] = useState(null);
   const [city, setCity] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Fungsi fetch data cuaca
+  const placeholders = [
+    "Cek cuaca di Jakarta...",
+    "Hari ini mendung nggak ya?",
+    "Masukkan nama kota kamu di sini...",
+    "Kota tujuan liburan lo?",
+    "Cari suhu udara sekarang..."
+  ];
+
+  const handleChange = (e) => setCity(e.target.value);
+
+
   const handlecuaca = async (e) => {
     e.preventDefault();
     if (!city) return;
@@ -23,27 +34,11 @@ function App() {
     }
   };
 
-  // Tentukan background berdasarkan waktu lokal kota
-  const getBackgroundStyle = () => {
-    if (!cuaca) return { background: '#1e293b' }; // default bg saat belum ada data
-
-    const jam = new Date(cuaca.location.localtime).getHours();
-
-    if (jam >= 5 && jam < 11)
-      return { background: 'linear-gradient(#89f7fe, #66a6ff)' }; // pagi
-    else if (jam >= 11 && jam < 15)
-      return { background: 'linear-gradient(#56ccf2, #2f80ed)' }; // siang
-    else if (jam >= 15 && jam < 18)
-      return { background: 'linear-gradient(#f7971e, #ffd200)' }; // sore
-    else
-      return { background: 'linear-gradient(#0f2027, #203a43, #2c5364)' }; // malam
-  };
-
   return (
     <div
-      className="min-h-screen text-white flex flex-col items-center justify-center px-4 transition-all duration-300"
+      className="min-h-screen text-white flex flex-col items-center justify-center px-4 transition-all duration-300 relative"
       style={{
-        ...getBackgroundStyle(),
+        backgroundColor: '#70C9D5',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
       }}
@@ -53,20 +48,12 @@ function App() {
         Cuacanya adalah aplikasi ringan untuk ngecek cuaca kota favorit lo secara cepat dan simpel. Gak perlu ribet, tinggal cari nama kota dan lihat kondisi cuacanya sekarang.
       </p>
 
-      <form
+      <PlaceholdersAndVanishInput
+        placeholders={placeholders}
+        onChange={(e) => setCity(e.target.value)}
         onSubmit={handlecuaca}
-        className="flex w-full max-w-md bg-white rounded-full overflow-hidden shadow-md"
-      >
-        <input
-          type="text"
-          placeholder="Contoh: Jakarta"
-          className="flex-grow px-4 py-2 text-black outline-none"
-          onChange={(e) => setCity(e.target.value)}
-        />
-        <button type="submit" className="bg-black text-white px-4">
-          ➤
-        </button>
-      </form>
+      />
+
 
       {loading && <p className="mt-6 text-sm">Loading cuaca...</p>}
 
@@ -97,6 +84,7 @@ function App() {
 
       <div className="absolute bottom-4 left-6 text-xs">zollahrp.my.id</div>
       <div className="absolute bottom-4 right-6 text-xs">rivalfitrah.my.id</div>
+
       <img
         src="/img/awan.png"
         alt="awan"
