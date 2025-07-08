@@ -43,6 +43,12 @@ function App() {
         backgroundRepeat: 'no-repeat',
       }}
     >
+      <img
+        src="/img/awan_kecil.png"
+        alt="awan kecil"
+        className="absolute top-10 left-[-200px] w-40 sm:w-60 animate-cloud pointer-events-none opacity-80"
+      />
+
       <h1 className="text-4xl md:text-5xl font-bold mb-4">Cuacanya</h1>
       <p className="text-center max-w-lg text-sm md:text-base mb-8">
         Cuacanya adalah aplikasi ringan untuk ngecek cuaca kota favorit lo secara cepat dan simpel. Gak perlu ribet, tinggal cari nama kota dan lihat kondisi cuacanya sekarang.

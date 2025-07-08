@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+@keyframes cloudMove {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(130vw);
+  }
+}
+
+.animate-cloud {
+  animation: cloudMove 60s linear infinite;
+}
