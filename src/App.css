@@ -1,14 +1,41 @@
 @import "tailwindcss";
 
+
 @keyframes cloudMove {
+  0% { transform: translateX(-100px); }
+  100% { transform: translateX(100vw); }
+}
+
+@keyframes cloudMoveLeft {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(130vw);
+    transform: translateX(120vw);
   }
 }
 
 .animate-cloud {
-  animation: cloudMove 60s linear infinite;
+  animation: cloudMoveLeft 60s linear infinite;
+}
+.animate-cloud-delay {
+  animation: cloudMoveLeft 80s linear infinite;
+  animation-delay: 5s;
+}
+.animate-cloud-slow { 
+  animation: cloudMoveLeft 100s linear infinite;
+  animation-delay: 2s;
+}
+.animate-cloud-fast {
+  animation: cloudMoveLeft 45s linear infinite;
+  animation-delay: 1s;
+}
+
+img.animate-cloud,
+img.animate-cloud-delay,
+img.animate-cloud-slow,
+img.animate-cloud-fast {
+  will-change: transform;
+  filter: blur(1.5px);
+  opacity: 0.8;
 }
