@@ -146,7 +146,7 @@ function App() {
         </div>
       </motion.div>
       {/* Loading dan Error */}
-      {loading && <p className="mt-6 text-sm animate-pulse">Loading cuaca...</p>}
+      {loading && <p className="mt-6 text-sm animate-pulse">Loading cuaca....</p>}
       {error && (
         <p className="mt-6 text-sm text-red-200 italic">{error}</p>
       )}
