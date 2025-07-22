@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const baseUrl = "http://api.weatherapi.com/v1"
+const baseUrl = "https://api.weatherapi.com/v1"
 const apiKey = import.meta.env.VITE_WEATHER_API_KEY
 
 export const getcuaca =async (city) => {
